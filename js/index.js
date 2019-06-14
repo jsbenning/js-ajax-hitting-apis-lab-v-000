@@ -1,28 +1,28 @@
 function displayBranches() {
   const branches = JSON.parse(this.responseText);
   //console.log(commits[0]);
-  const branchesList = `<ul>${branches
-    .map(
-      branch =>
-        '<li><strong>' +
-        branch.author.login +
-        '</strong> - ' +
-        branch.commit.author.name +
-        ' - ' +
-        branch.commit.message +
-        '</li>'
-    )
-    .join('')}</ul>`;
+//   const branchesList = `<ul>${branches
+//     .map(
+//       branch =>
+//         '<li><strong>' +
+//         branch.author.login +
+//         '</strong> - ' +
+//         branch.commit.author.name +
+//         ' - ' +
+//         branch.commit.message +
+//         '</li>'
+//     )
+//     .join('')}</ul>`;
 
-    document.getElementById('details').innerHTML = branchesList;
+//     document.getElementById('details').innerHTML = branchesList;
 }
-//
+
 function getBranches(el) {
   const username= el.dataset.username;
   const repository = el.dataset.repository;
   console.log(username, repository);
   const req = new XMLHttpRequest();
-  req.addEventListener('load', displayCommits);
+  req.addEventListener('load', displayBranches);
   req.open('GET', 'https://api.github.com/repos/' + username + '/' + repository + '/branches');
   req.send();
 }
@@ -47,9 +47,8 @@ function displayCommits() {
 }
 //
 function getCommits(el) {
-  const username= el.dataset.username;
+  const username = el.dataset.username;
   const repository = el.dataset.repository;
-  console.log(username, repository);
   const req = new XMLHttpRequest();
   req.addEventListener('load', displayCommits);
   req.open('GET', 'https://api.github.com/repos/' + username + '/' + repository + '/commits');
@@ -66,7 +65,10 @@ function displayRepositories() {
         r.name + ' - <a href="' + r.html_url + '" >' + r.html_url + '</a>' +
         '- <a href="#" data-username="' +
         r.owner.login + '" data-repostitory="' + r.name +
-        '" onclick="getCommits(this)">Get Commits</a></li>'
+        '" onclick="getCommits(this)">Get Commits</a></li>' +
+        '- <a href="#" data-username="' +
+        r.owner.login + '" data-repostitory="' + r.name +
+        '" onclick="getBranches(this)">Get Branches</a></li>'
     )
     .join('')}</ul>`;
 	document.getElementById('repositories').innerHTML = repoList;
