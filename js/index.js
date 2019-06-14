@@ -1,20 +1,21 @@
 function displayBranches() {
   const branches = JSON.parse(this.responseText);
-  //console.log(commits[0]);
-//   const branchesList = `<ul>${branches
-//     .map(
-//       branch =>
-//         '<li><strong>' +
-//         branch.author.login +
-//         '</strong> - ' +
-//         branch.commit.author.name +
-//         ' - ' +
-//         branch.commit.message +
-//         '</li>'
-//     )
-//     .join('')}</ul>`;
+  console.log(branches[0]);
+  const branchesList = `<ul>${branches
+    .map(
+      branch =>
+        '<li><strong>' +
+        branch.name +
+        //branch.author.login +
+        '</strong> - ' +
+        // branch.commit.author.name +
+        // ' - ' +
+        // branch.commit.message +
+        '</li>'
+    )
+    .join('')}</ul>`;
 
-//     document.getElementById('details').innerHTML = branchesList;
+    document.getElementById('details').innerHTML = branchesList;
 }
 
 function getBranches(el) {
@@ -65,10 +66,10 @@ function displayRepositories() {
         r.name + ' - <a href="' + r.html_url + '" >' + r.html_url + '</a>' +
         '- <a href="#" data-username="' +
         r.owner.login + '" data-repository="' + r.name +
-        '" onclick="getCommits(this)">Get Commits</a></li>'
-        // '- <a href="#" data-username="' +
-        // r.owner.login + '" data-repostitory="' + r.name +
-        // '" onclick="getBranches(this)">Get Branches</a></li>'
+        '" onclick="getCommits(this)">Get Commits</a></li>' +
+        '- <a href="#" data-username="' +
+        r.owner.login + '" data-repository="' + r.name +
+        '" onclick="getBranches(this)">Get Branches</a></li>'
     )
     .join('')}</ul>`;
 	document.getElementById('repositories').innerHTML = repoList;
