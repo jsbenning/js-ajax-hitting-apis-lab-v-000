@@ -1,16 +1,11 @@
 function displayBranches() {
   const branches = JSON.parse(this.responseText);
-  console.log(branches[0]);
   const branchesList = `<ul>${branches
     .map(
       branch =>
         '<li><strong>' +
         branch.name +
-        //branch.author.login +
         '</strong> - ' +
-        // branch.commit.author.name +
-        // ' - ' +
-        // branch.commit.message +
         '</li>'
     )
     .join('')}</ul>`;
@@ -58,7 +53,6 @@ function getCommits(el) {
 
 function displayRepositories() {
 	var repos = JSON.parse(this.responseText);
-	console.log(repos);
 	const repoList = `<ul>${repos
     .map(
       r =>
