@@ -64,11 +64,11 @@ function displayRepositories() {
         '<li>' +
         r.name + ' - <a href="' + r.html_url + '" >' + r.html_url + '</a>' +
         '- <a href="#" data-username="' +
-        r.owner.login + '" data-repostitory="' + r.name +
-        '" onclick="getCommits(this)">Get Commits</a></li>' +
-        '- <a href="#" data-username="' +
-        r.owner.login + '" data-repostitory="' + r.name +
-        '" onclick="getBranches(this)">Get Branches</a></li>'
+        r.owner.login + '" data-repository="' + r.name +
+        '" onclick="getCommits(this)">Get Commits</a></li>'
+        // '- <a href="#" data-username="' +
+        // r.owner.login + '" data-repostitory="' + r.name +
+        // '" onclick="getBranches(this)">Get Branches</a></li>'
     )
     .join('')}</ul>`;
 	document.getElementById('repositories').innerHTML = repoList;
